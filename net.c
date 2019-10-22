@@ -1,34 +1,31 @@
-#include "graph.h"
 #include "net.h"
-#include <memory.h>
+#include "graph.h"
 #include <stdio.h>
 
-bool_t node_set_device_type(node_t *node, unsigned int F) {
-    SET_BIT(node->node_nw_prop.flags, F);
+bool_t node_set_device_type(node_t *node, unsigned int flag) {
+
+    SET_BIT(node->node_nw_prop.flags, flag);
+    
     return TRUE;
 }
 
 bool_t node_set_loopback_address(node_t *node, char *ip_addr) {
 
-    if(IS_BIT_SET(node->node_nw_prop.flags, HUB))
-        //assert(0); /*Wrong Config : A HUB do not have any IP addresses*/
-
-    if(!IS_BIT_SET(node->node_nw_prop.flags, L3_ROUTER))
-        //assert(0); /*You must enable L3 routing on device first*/
+    if (!IS_BIT_SET(node->node_nw_prop.flags, L3_ROUTER)) return FALSE;
 
     node->node_nw_prop.is_lb_addr_config = TRUE;
-    strncpy(NODE_LO_ADDR(node), ip_addr, 16);
-    NODE_LO_ADDR(node)[16] = '\0';
+    strncpy(NODE_LO_ADDR(node), ip_addr, IP_ADDR_SIZE);
+    NODE_LO_ADDR(node)[IP_ADDR_SIZE] = '\0';
+    node->node_nw_prop.is_lb_addr_config = TRUE;
     
     return TRUE;
-
 }
 
 bool_t node_set_intf_ip_address(node_t *node, char *local_if, char *ip_addr, char mask) {
     
     interface_t *interface = get_node_if_by_name(node, local_if);
-    strncpy(IF_IP(interface), ip_addr, 16);
-    IF_IP(interface)[16] = '\0';
+    strncpy(IF_IP(interface), ip_addr, IP_ADDR_SIZE);
+    IF_IP(interface)[IP_ADDR_SIZE] = '\0';
     interface->intf_nw_prop.mask = mask; 
     interface->intf_nw_prop.is_ip_add_config = TRUE;
     return TRUE;

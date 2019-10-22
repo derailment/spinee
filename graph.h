@@ -9,9 +9,6 @@
 #define IF_NAME_SIZE      16
 #define MAX_INTF_PER_NODE 10
 
-typedef struct graph_ graph_t;
-typedef struct node_ node_t;
-typedef struct interface_ interface_t;
 typedef struct link_ link_t;
 
 struct graph_ {
@@ -56,6 +53,17 @@ static inline int get_node_intf_available_slot(node_t *node){
         return i;
     }
     return -1;
+}
+
+static inline interface_t *get_node_if_by_name(node_t *node, char *local_if){
+    for (int i = 0; i < MAX_INTF_PER_NODE; i++) {
+        interface_t *intf = node->intf[i];
+        if(intf == NULL) {return NULL;}
+        if(strncmp(intf->if_name, local_if, IF_NAME_SIZE) == 0) {
+            return intf;
+        }
+    }
+    return NULL;
 }
 
 void insert_link_between_two_nodes(node_t *node1, node_t *node2, char *from_if_name, char *to_if_name, unsigned int cost);

@@ -8,7 +8,7 @@ OBJS=gluethread/glthread.o \
 				  net.o
 
 test_nw_topo:test.o ${OBJS}
-		${CC} ${CFLAGS} test.o ${OBJS} -o test_topo
+		${CC} ${CFLAGS} test.o ${OBJS} -o test_nw_topo
 
 test.o:test.c
 		${CC} ${CFLAGS} -c test.c -o test.o

@@ -3,12 +3,14 @@
 
 #define L3_ROUTER (1 << 0)
 #define L2_SWITCH (1 << 1)
-#define HUB (1 << 2)
+#define IP_ADDR_SIZE 16
+#define MAC_SIZE 48
 #define IF_MAC(intf_ptr) (intf_ptr->intf_nw_prop.mac_add.mac)
 #define IF_IP(intf_ptr) (intf_ptr->intf_nw_prop.ip_add.ip_addr)
 #define NODE_LO_ADDR(node_ptr) (node_ptr->node_nw_prop.lb_addr.ip_addr)
 
 #include "utils.h"
+#include <memory.h>
 
 typedef struct graph_ graph_t;
 typedef struct node_ node_t;
@@ -20,11 +22,11 @@ typedef struct ip_add_ ip_add_t;
 typedef struct mac_add_ mac_add_t;
 
 struct ip_add_ {
-    char ip_addr[16];
+    char ip_addr[IP_ADDR_SIZE];
 };
 
 struct mac_add_ {
-    char mac[48];
+    char mac[MAC_SIZE];
 };
 
 struct intf_nw_prop_ {
