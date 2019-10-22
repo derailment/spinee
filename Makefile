@@ -1,12 +1,13 @@
 CC=gcc
 CFLAGS=-g
-TARGET:test_topo
+TARGET:test_nw_topo
 
 OBJS=gluethread/glthread.o \
                   topologies.o \
-                  graph.o
+                  graph.o \
+				  net.o
 
-test_topo:test.o ${OBJS}
+test_nw_topo:test.o ${OBJS}
 		${CC} ${CFLAGS} test.o ${OBJS} -o test_topo
 
 test.o:test.c
@@ -20,6 +21,9 @@ graph.o:graph.c
 
 topologies.o:topologies.c
 		${CC} ${CFLAGS} -c topologies.c -o topologies.o
+
+net.o:net.c
+		${CC} ${CFLAGS} -c net.c -o net.o
 
 clean:
 		rm *.o
