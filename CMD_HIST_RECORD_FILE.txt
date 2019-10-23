@@ -1,0 +1,11 @@
+show help
+show topology
+show help
+cd 
+?
+show ?
+show help
+debug show cmdtree
+cd
+?
+/
