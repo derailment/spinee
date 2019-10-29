@@ -7,10 +7,11 @@ OBJS=gluethread/glthread.o \
                   topologies.o \
                   graph.o \
 				  net.o \
-				  nwcli.o
+				  nwcli.o \
+				  test.o
 
-test_cli:test.o ${OBJS} CommandParser/libcli.a
-		${CC} ${CFLAGS} test.o ${OBJS} -o test_cli ${LIBS}
+test_cli:${OBJS} CommandParser/libcli.a
+		${CC} ${CFLAGS} ${OBJS} -o test_cli ${LIBS}
 
 test.o:test.c
 		${CC} ${CFLAGS} -c test.c -o test.o

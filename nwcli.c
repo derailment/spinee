@@ -41,5 +41,5 @@ void nw_init_cli(){
     }
 
     support_cmd_negation(config);
-    /*Do not Add any param here*/
+    /*Do not add any param here*/
 }

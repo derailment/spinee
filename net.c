@@ -2,7 +2,6 @@
 #include "graph.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 
 void interface_assign_mac_address(interface_t *interface){
     
