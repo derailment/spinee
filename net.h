@@ -26,7 +26,7 @@ struct ip_add_ {
 };
 
 struct mac_add_ {
-    char mac[MAC_SIZE];
+    unsigned char mac[MAC_SIZE];
 };
 
 struct intf_nw_prop_ {
@@ -45,6 +45,7 @@ struct node_nw_prop_ {
 bool_t node_set_device_type(node_t *node, unsigned int F);
 bool_t node_set_loopback_address(node_t *node, char *ip_addr);
 bool_t node_set_intf_ip_address(node_t *node, char *local_if, char *ip_addr, char mask);
+void interface_assign_mac_address(interface_t *interface);
 void dump_nw_graph(graph_t *graph);
 void dump_nw_node(node_t *node);
 void dump_nw_intf(interface_t *interface);

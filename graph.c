@@ -28,6 +28,9 @@ void insert_link_between_two_nodes(node_t *node1, node_t *node2, char *from_if_n
 
     empty_intf_slot = get_node_intf_available_slot(node2);
     node2->intf[empty_intf_slot] = &link->intf2;
+
+    interface_assign_mac_address(&link->intf1);
+    interface_assign_mac_address(&link->intf2);
 }
 
 graph_t *create_new_graph(char *topo_name){

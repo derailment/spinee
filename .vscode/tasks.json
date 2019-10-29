@@ -7,7 +7,7 @@
             "label": "build",
             "type": "shell",
             "command": "make",
-            "dependsOn": ["clear"]
+            //"dependsOn": ["clear"]
         },
         {
             "label": "clear",
