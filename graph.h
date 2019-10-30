@@ -21,6 +21,9 @@ struct node_ {
     interface_t *intf[MAX_INTF_PER_NODE];
     glthread_t graph_glue;
     node_nw_prop_t node_nw_prop;
+    unsigned int udp_port_number;
+    int udp_sock_fd;
+
 };
 
 struct interface_ {

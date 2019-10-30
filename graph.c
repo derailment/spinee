@@ -3,6 +3,8 @@
 #include <string.h>
 #include <stdio.h>
 
+extern void init_udp_socket(node_t *node);
+
 void insert_link_between_two_nodes(node_t *node1, node_t *node2, char *from_if_name, char *to_if_name, unsigned int cost){
 
     link_t *link = calloc(1, sizeof(link_t));
@@ -48,7 +50,7 @@ node_t *create_graph_node(graph_t *graph, char *node_name){
     node_t *node = calloc(1, sizeof(node_t));
     strncpy(node->node_name, node_name, NODE_NAME_SIZE);
     node->node_name[NODE_NAME_SIZE] = '\0';
-
+    init_udp_socket(node);
     init_glthread(&node->graph_glue);
     glthread_add_next(&graph->node_list, &node->graph_glue);
     return node;

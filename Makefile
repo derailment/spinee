@@ -8,6 +8,7 @@ OBJS=gluethread/glthread.o \
                   graph.o \
 				  net.o \
 				  nwcli.o \
+				  comm.o \
 				  test.o
 
 test_cli:${OBJS} CommandParser/libcli.a
@@ -30,6 +31,9 @@ net.o:net.c
 
 nwcli.o:nwcli.c
 		${CC} ${CFLAGS} -c nwcli.c -o nwcli.o
+
+comm.o:comm.c
+		${CC} ${CFLAGS} -c comm.c -o comm.o
 
 CommandParser/libcli.a:
 		(cd CommandParser; make)

@@ -1,5 +1,7 @@
 #include "graph.h"
 
+extern void network_start_pkt_receiver_thread(graph_t *topo);
+
 graph_t * build_first_topo(){
 
 #if 0
@@ -21,7 +23,6 @@ graph_t * build_first_topo(){
      +-------+                                              +----------+
 
 #endif
-
 
     graph_t *topo = create_new_graph("Network Topology");
     node_t *R0_re = create_graph_node(topo, "R0_re");
@@ -46,6 +47,8 @@ graph_t * build_first_topo(){
     node_set_loopback_address(R2_re, "122.1.1.2");
     node_set_intf_ip_address(R2_re, "eth0/3", "30.1.1.2", 24);
     node_set_intf_ip_address(R2_re, "eth0/5", "40.1.1.2", 24);
+
+    network_start_pkt_receiver_thread(topo);
 
     return topo;
 
