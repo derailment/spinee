@@ -9,7 +9,7 @@
             "type": "cppdbg",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/test_cli",
+            "program": "${workspaceFolder}/test_pkt",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

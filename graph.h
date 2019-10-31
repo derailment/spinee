@@ -23,7 +23,6 @@ struct node_ {
     node_nw_prop_t node_nw_prop;
     unsigned int udp_port_number;
     int udp_sock_fd;
-
 };
 
 struct interface_ {
@@ -38,6 +37,8 @@ struct link_ {
     interface_t intf2;
     unsigned int cost;
 };
+
+GLTHREAD_TO_STRUCT(graph_glue_to_node, node_t, graph_glue);
 
 static inline node_t *get_nbr_node(interface_t *interface) {
     link_t *link = interface->link;
@@ -69,12 +70,29 @@ static inline interface_t *get_node_if_by_name(node_t *node, char *local_if){
     return NULL;
 }
 
+static inline node_t *get_node_by_node_name(graph_t *topo, char *node_name){
+
+    node_t *node;
+    glthread_t *curr;
+
+    ITERATE_GLTHREAD_BEGIN(&topo->node_list, curr){
+
+        node = graph_glue_to_node(curr);
+        
+        if(strncmp(node->node_name, node_name, NODE_NAME_SIZE) == 0) {
+            return node;
+        }
+            
+    } ITERATE_GLTHREAD_END(&topo->node_list, curr);
+
+    return NULL;
+}
+
 void insert_link_between_two_nodes(node_t *node1, node_t *node2, char *from_if_name, char *to_if_name, unsigned int cost);
 graph_t *create_new_graph(char *topo_name);
 node_t *create_graph_node(graph_t *graph, char *node_name);
 void dump_graph(graph_t *graph);
 void dump_node(node_t *node);
 void dump_interface(interface_t *interface);
-GLTHREAD_TO_STRUCT(graph_glue_to_node, node_t, graph_glue);
 
 #endif

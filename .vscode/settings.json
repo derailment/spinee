@@ -1,5 +1,7 @@
 {
     "files.associations": {
-        "libcli.h": "c"
+        "libcli.h": "c",
+        "unistd.h": "c",
+        "socket.h": "c"
     }
 }

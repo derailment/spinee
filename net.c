@@ -84,7 +84,7 @@ void dump_nw_intf(interface_t *interface){
          printf("\t IP Addr = %s/%u", "Nil", 0);
     }
 
-    printf("\t MAC : %02x:%02x:%02x:%02x:%02x:%02x\n", 
+    printf("\t MAC : %2x:%2x:%2x:%2x:%2x:%2x\n", 
         IF_MAC(interface)[0],
         IF_MAC(interface)[1],
         IF_MAC(interface)[2],

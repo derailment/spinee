@@ -1,7 +1,7 @@
 CC=gcc
 CFLAGS=-g
 LIBS=-L ./CommandParser -lpthread -lcli
-TARGET:test_cli
+TARGET:test_pkt
 
 OBJS=gluethread/glthread.o \
                   topologies.o \
@@ -11,8 +11,8 @@ OBJS=gluethread/glthread.o \
 				  comm.o \
 				  test.o
 
-test_cli:${OBJS} CommandParser/libcli.a
-		${CC} ${CFLAGS} ${OBJS} -o test_cli ${LIBS}
+test_pkt:${OBJS} CommandParser/libcli.a
+		${CC} ${CFLAGS} ${OBJS} -o test_pkt ${LIBS}
 
 test.o:test.c
 		${CC} ${CFLAGS} -c test.c -o test.o
