@@ -2,6 +2,7 @@
     "files.associations": {
         "libcli.h": "c",
         "unistd.h": "c",
-        "socket.h": "c"
+        "socket.h": "c",
+        "cmdcodes.h": "c"
     }
 }

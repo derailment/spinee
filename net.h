@@ -42,19 +42,6 @@ struct node_nw_prop_ {
     ip_add_t lb_addr;
 };
 
-static inline void init_node_nw_prop(node_nw_prop_t *node_nw_prop) {
-    node_nw_prop->flags = 0;
-    node_nw_prop->is_lb_addr_config = FALSE;
-    memset(node_nw_prop->lb_addr.ip_addr, 0, IP_ADDR_SIZE);
-}
-
-static inline void init_intf_nw_prop(intf_nw_prop_t *intf_nw_prop) {
-    memset(intf_nw_prop->mac_add.mac , 0 , MAC_SIZE);
-    intf_nw_prop->is_ip_add_config = FALSE;
-    memset(intf_nw_prop->ip_add.ip_addr, 0, IP_ADDR_SIZE);
-    intf_nw_prop->mask = 0;
-}
-
 bool_t node_set_device_type(node_t *node, unsigned int F);
 bool_t node_set_loopback_address(node_t *node, char *ip_addr);
 bool_t node_set_intf_ip_address(node_t *node, char *local_if, char *ip_addr, char mask);

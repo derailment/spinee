@@ -16,17 +16,12 @@ int main(int argc, char **argv){
     
     // Build network topology
     topo = build_first_topo();
-
+    printf("Start console...\n");
+    
     // Give some time for packet receiver thread to start
     sleep(2);
-    
-    char msg[] = "Hello world!";
-    node_t *node = get_node_by_node_name(topo, "R0_re");
-    interface_t *oif = get_node_if_by_name(node, "eth0/0");
-    send_pkt_out(msg, sizeof(msg), oif);
-    scanf("\n");
 
-    dump_nw_graph(topo);
+    // Start simulated switch/router console
     start_shell();
 
     return 0;

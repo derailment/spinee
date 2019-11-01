@@ -1,6 +1,7 @@
 #include "comm.h"
 #include "graph.h"
 #include <sys/socket.h>
+#include <sys/select.h>
 #include <pthread.h>
 #include <netinet/in.h>
 #include <memory.h>
@@ -135,7 +136,7 @@ int send_pkt_out(char *pkt, unsigned int pkt_size, interface_t *interface){
 int pkt_receive(node_t *node, interface_t *interface, char *pkt, unsigned int pkt_size){
 
     /*Do further processing of the pkt here*/
-    printf("Msg Recvd : Rcv Node %s, Intf : %s, data recvd : %s, pkt size : %u\n", node->node_name, interface->if_name, pkt, pkt_size);
+    printf("Msg Recvd: Rcv Node %s, Intf: %s, data recvd: %s, pkt size: %u\n", node->node_name, interface->if_name, pkt, pkt_size);
 
     return 0;
 }
