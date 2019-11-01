@@ -23,8 +23,9 @@ int main(int argc, char **argv){
     node_t *node = get_node_by_node_name(topo, "R0_re");
     interface_t *oif = get_node_if_by_name(node, "eth0/0");
     send_pkt_out(msg, sizeof(msg), oif);
-    
-    //dump_nw_graph(topo);
+    scanf("\n");
+
+    dump_nw_graph(topo);
     start_shell();
 
     return 0;
