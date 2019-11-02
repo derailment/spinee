@@ -27,7 +27,7 @@ static int send_udp_handler(param_t *param, ser_buff_t *tlv_buf, op_mode enable_
 
     int CMDCODE = -1;
     char *msg = "Hello world!";
-    int counter = 10;
+    int counter = 5;
     node_t *node;
     interface_t *oif;
     char *node_name;
